@@ -1,33 +1,38 @@
 <template>
     <div class="poke">
-        <div :key="i" v-for="(pokemon, i) in pokemons.results">{{pokemon.name}}</div>
+        <!--        <div :key="i" v-for="(pokemon, i) in pokemons.results">{{pokemon.name}}</div>-->
+        <div class="singlePoke">
+        </div>
+        <PokeList class="pokeAll"/>
+        <br style="clear: both">
     </div>
 </template>
 
 <script>
-
-    import {mapActions, mapGetters, mapState} from "vuex";
+    import PokeList from "../components/PokeList";
 
     export default {
-
+        components: {PokeList},
         data() {
             return {}
         },
-        computed: {
-            ...mapGetters([
-                'getPokeById',
-            ]),
-            ...mapActions([
-                'getPokemons'
-            ]),
-            ...mapState([
-                'pokemons',
-            ])
-        },
-        mounted() {
-            // console.log(this.$store.getters.getPokeById(1));
-            this.$store.dispatch('getPokemons');
-            // console.log(this.$store.state.pokemons);
-        }
     }
 </script>
+
+<style lang="scss" scoped>
+    .poke {
+        border: 1px solid black;
+        padding: 20px;
+    }
+
+    .singlePoke {
+        float: left;
+        border-right: 1px solid black;
+        width: 50%;
+    }
+
+    .pokeAll {
+        float: right;
+        width: 50%;
+    }
+</style>

@@ -5,14 +5,18 @@
 </template>
 
 <script>
-import Poke from './views/Poke'
+    import Poke from './views/Poke'
+
     export default {
-    components: {
-        Poke
-    }
+        components: {
+            Poke
+        }
     }
 </script>
 
 <style lang="scss">
-
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
 </style>
