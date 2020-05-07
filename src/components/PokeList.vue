@@ -1,7 +1,11 @@
 <template>
-    <ul class="pokeList">
-        <li :key="i" v-for="(pokemon, i) in pokemons.results">{{pokemon.name}}</li>
-    </ul>
+    <div>
+        <ul class="pokeList">
+            <li :key="i" v-for="(pokemon, i) in pokemons.results">{{pokemon.name}}</li>
+        </ul>
+        <button @click="getPrev">Prev</button>
+        <button @click="getNext">Next</button>
+    </div>
 </template>
 
 <script>
@@ -14,7 +18,9 @@
                 'getPokeById',
             ]),
             ...mapActions([
-                'getPokemons'
+                'getPokemons',
+                'nextPokemons',
+                'prevPokemons'
             ]),
             ...mapState([
                 'pokemons',
@@ -22,16 +28,22 @@
         },
         mounted() {
             this.$store.dispatch('getPokemons');
+        },
+        methods: {
+            getNext() {
+                this.$store.dispatch('nextPokemons')
+            },
+            getPrev() {
+                this.$store.dispatch('prevPokemons')
+            }
         }
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    .pokeList {
-        /*width: 100%;*/
-        /*height: 100%;*/
-        /*background-color: black;*/
-        /*float: right;*/
+    ul {
+        padding: 20px;
+        list-style: none;
     }
 </style>

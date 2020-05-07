@@ -1,10 +1,9 @@
 <template>
     <div class="poke">
         <!--        <div :key="i" v-for="(pokemon, i) in pokemons.results">{{pokemon.name}}</div>-->
-        <div class="singlePoke">
+        <div class="poke-list">
         </div>
-        <PokeList class="pokeAll"/>
-        <br style="clear: both">
+        <PokeList class="poke-list"/>
     </div>
 </template>
 
@@ -22,17 +21,15 @@
 <style lang="scss" scoped>
     .poke {
         border: 1px solid black;
-        padding: 20px;
+        display: flex;
     }
 
-    .singlePoke {
-        float: left;
-        border-right: 1px solid black;
-        width: 50%;
+    .poke-list {
+        flex: 1;
+
+        &:first-of-type {
+            border-right: 1px solid black;
+        }
     }
 
-    .pokeAll {
-        float: right;
-        width: 50%;
-    }
 </style>
